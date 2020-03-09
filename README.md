@@ -1,17 +1,17 @@
 The website will have the following specification:
 
-Show a list of bookmarks
+1.Show a list of bookmarks
 
-Add new bookmarks
+2.Add new bookmarks
 
-Delete bookmarks
+3.Delete bookmarks
 
-Update bookmarks
+4.Update bookmarks
 
-Comment on bookmarks
+5.Comment on bookmarks
 
-Tag bookmarks into categories
+6.Tag bookmarks into categories
 
-Filter bookmarks by tag
+7.Filter bookmarks by tag
 
-Users are restricted to manage only their own bookmarks
+8.Users are restricted to manage only their own bookmarks
