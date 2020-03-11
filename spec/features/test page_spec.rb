@@ -1,3 +1,5 @@
+require 'pg'
+
 feature 'test_page' do
     scenario "homepage displays correct text" do
         visit '/'
@@ -7,10 +9,17 @@ feature 'test_page' do
 
     feature "displays bookmarks" do
         scenario "User can view bookmarks" do
-        visit '/bookmarks'
+            connection = PG.connect(dbname: 'bookmark_manager_test')
+            # connection.exec("TRUNCATE bookmarks;")
 
-        expect(page).to have_content "http://www.makersacademy.com"
-        expect(page).to have_content "http://www.destroyallsoftware.com"
-        expect(page).to have_content "http://www.google.com"
+            connection.exec("INSERT INTO bookmarks VALUES(1, 'http://www.makersacademy.com');")
+            connection.exec("INSERT INTO bookmarks VALUES(2, 'http://www.destroyallsoftware.com');")
+            connection.exec("INSERT INTO bookmarks VALUES(3, 'http://www.google.com');")
+        
+            visit '/bookmarks'
+
+            expect(page).to have_content "http://www.makersacademy.com"
+            expect(page).to have_content "http://www.destroyallsoftware.com"
+            expect(page).to have_content "http://www.google.com"
+        end
     end
-end
